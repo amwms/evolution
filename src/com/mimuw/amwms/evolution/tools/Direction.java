@@ -1,5 +1,5 @@
 package com.mimuw.amwms.evolution.tools;
-//TODO - EXCEPTION - CHECKED
+
 public enum Direction {
 
     N(0, "north"),
@@ -15,7 +15,8 @@ public enum Direction {
         this.name = name;
     }
 
-    // niemożliwe jest aby nie znalazła się wartość ponieważ mod % Direction.values().length jest z zakresu 0 do 3
+    // It is impossible for a value not to be found because mod % Direction.values().length is from range 0 to 3
+    // and all the values are from that range
     private Direction intToDirection(int mod) {
         for (Direction direction : Direction.values()) {
             if (direction.mod == (mod % Direction.values().length))

@@ -9,6 +9,6 @@ public class WrongNumberOfArguments extends ProgramException {
 
     @Override
     public void printMessage() {
-        System.out.println(message);
+        System.err.println(message);
     }
 }

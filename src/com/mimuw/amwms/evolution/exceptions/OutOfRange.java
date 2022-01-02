@@ -9,6 +9,6 @@ public class OutOfRange extends ProgramException{
 
     @Override
     public void printMessage() {
-        System.out.println(parameterName + " NOT FROM RANGE");
+        System.err.println(parameterName + " NOT FROM RANGE");
     }
 }

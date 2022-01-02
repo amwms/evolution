@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Mutation {
-    private float probabilityOfDeletion; // pr_usunięcia_instr
-    private float probabilityOfAddition; // pr_dodania_instr
-    private float probabilityOfChange; // pr_zmiany_instr
-    private ArrayList<Move> listOfInstructions; // spis_instr
+    private float probabilityOfDeletion;
+    private float probabilityOfAddition;
+    private float probabilityOfChange;
+    private ArrayList<Move> listOfInstructions;
 
     public Mutation(float probabilityOfDeletion, float probabilityOfAddition, float probabilityOfChange,
                     ArrayList<Move> listOfInstructions) {
@@ -29,7 +29,7 @@ public class Mutation {
             newProgramLength = newProgram.getProgramLength();
         }
 
-        if (Math.random() <= probabilityOfAddition) {
+        if (Math.random() <= probabilityOfAddition && listOfInstructions.size() > 0) {
             Random rand = new Random();
             int i = rand.nextInt(listOfInstructions.size());
 
@@ -37,7 +37,7 @@ public class Mutation {
             newProgramLength = newProgram.getProgramLength();
         }
 
-        if (Math.random() <= probabilityOfChange && newProgramLength > 0) {
+        if (Math.random() <= probabilityOfChange && newProgramLength > 0 && listOfInstructions.size() > 0) {
             Random rand = new Random();
             int idOfMove = rand.nextInt(listOfInstructions.size());
             int idOfChange = rand.nextInt(newProgramLength);

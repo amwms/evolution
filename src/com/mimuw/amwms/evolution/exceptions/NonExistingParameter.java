@@ -9,6 +9,6 @@ public class NonExistingParameter extends ProgramException {
 
     @Override
     public void printMessage() {
-        System.out.println("THIS PARAMETER DOES NOT EXIST: " + parameterName);
+        System.err.println("THIS PARAMETER DOES NOT EXIST: " + parameterName);
     }
 }

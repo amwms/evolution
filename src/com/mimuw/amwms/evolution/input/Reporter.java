@@ -1,14 +1,12 @@
 package com.mimuw.amwms.evolution.input;
 
 import com.mimuw.amwms.evolution.organisms.Organism;
-import com.mimuw.amwms.evolution.world.Space;
 import com.mimuw.amwms.evolution.world.World;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.util.ArrayList;
 
 public class Reporter {
-    private int dayCount = -1; // changed - was 0
+    private int dayCount = -1;
     private int organismCount;
     private int spacesWithGrownFood;
 
@@ -29,9 +27,9 @@ public class Reporter {
         System.out.printf("rob: %d, ", organismCount);
         System.out.printf("żyw: %d, ", spacesWithGrownFood);
 
-        System.out.printf("prg: %d/%f/%d, ", minimalProgramLength, averageProgramLength, maximalProgramLength);
-        System.out.printf("energ: %d/%f/%d, ", minimalOrganismEnergy, averageOrganismEnergy, maximalOrganismEnergy);
-        System.out.printf("wiek: %d/%f/%d\n", minimalOrganismAge, averageOrganismAge, maximalOrganismAge);
+        System.out.printf("prg: %d/%.2f/%d, ", minimalProgramLength, averageProgramLength, maximalProgramLength);
+        System.out.printf("energ: %d/%.2f/%d, ", minimalOrganismEnergy, averageOrganismEnergy, maximalOrganismEnergy);
+        System.out.printf("wiek: %d/%.2f/%d\n", minimalOrganismAge, averageOrganismAge, maximalOrganismAge);
     }
 
     public void update(World world, ArrayList<Organism> organisms) {
@@ -119,11 +117,9 @@ public class Reporter {
         averageOrganismAge = ((float) ageSum) / ((float) organisms.size());
     }
 
-
     public int getLongestProgramLength() {
         return maximalProgramLength;
     }
-
 
     private void resetProgramLength() {
         minimalProgramLength = Integer.MAX_VALUE;

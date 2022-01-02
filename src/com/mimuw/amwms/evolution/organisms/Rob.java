@@ -25,15 +25,15 @@ public class Rob extends SimpleLifeform {
         this.mutationGene = mutationGene;
     }
 
-    //zakładam że inne organizmy niż roby mogą inaczej zjadać jedenie z pól żywieniowy (np tylko jego ułamek)
+    // I assume that other organisms, than robs, can eat food from food spaces differently (eg. only a fraction of it).
     @Override
     public void eat(Space space) {
         if (space.hasFood())
             addEnergy(space.getEaten());
     }
 
-    // zakładam że inne organizmy niż roby mogą inaczej umierać i np zostawiać po sobie jakiś ślad
-    // (np w formie naturalnego nawozu który przyspiesza wzrost jedzenia na polu żywieniowym)
+    // I assume that other organisms, than robs, can die differently and for example leave something behind
+    // (for example their dead bodies can become fertilizer which instantly makes the food fully grow).
     @Override
     public void die() {
         setAlive(false);
@@ -46,6 +46,9 @@ public class Rob extends SimpleLifeform {
                 && super.isAlive() && super.getAge() > 0;
     }
 
+    // I keep the energy of a rob as an integer and when it reproduces a fraction of that energy
+    // (fractionOfParentEnergy * energy - which is casted to an integer type) goes to the kid and is taken away from the
+    // parent rob
     @Override
     public Organism reproduce(String name) {
         Program newProgram = mutationGene.mutate(super.getProgram());

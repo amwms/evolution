@@ -9,6 +9,6 @@ public class WrongInputVerseLength extends ProgramException {
 
     @Override
     public void printMessage() {
-        System.out.println("TOO " + error + "INPUT");
+        System.err.println("TOO " + error + " INPUT");
     }
 }

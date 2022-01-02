@@ -25,12 +25,12 @@ public class DataCreator {
     private int energyFromFood; // ile_daje_jedzenie
     private int foodGrowthTime; // ile_rośnie_jedzenie
 
-    private float probabilityOfReproducing; //pr_powielenia
-    private float fractionOfParentEnergy; // ułamek_energii_rodzica
+    private float probabilityOfReproducing; //pr_powielenia - I assume that this is a fraction for range [0;1]
+    private float fractionOfParentEnergy; // ułamek_energii_rodzica - I assume that this is a fraction for range [0;1]
     private int minLimitForReproducing; // limit_powielania
-    private float probabilityOfDeletion; // pr_usunięcia_instr
-    private float probabilityOfAddition; // pr_dodania_instr
-    private float probabilityOfChange; // pr_zmiany_instr
+    private float probabilityOfDeletion; // pr_usunięcia_instr - I assume that this is a fraction for range [0;1]
+    private float probabilityOfAddition; // pr_dodania_instr - I assume that this is a fraction for range [0;1]
+    private float probabilityOfChange; // pr_zmiany_instr - I assume that this is a fraction for range [0;1]
 
     public void setWorld(World world) {
         this.world = world;

@@ -9,6 +9,6 @@ public class InvalidWorldBoardInput extends ProgramException{
 
     @Override
     public void printMessage() {
-        System.out.println("WRONG INPUT OF WORLD: " + error);
+        System.err.println("WRONG INPUT OF WORLD: " + error);
     }
 }

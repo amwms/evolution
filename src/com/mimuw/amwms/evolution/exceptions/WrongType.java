@@ -9,6 +9,6 @@ public class WrongType extends ProgramException {
 
     @Override
     public void printMessage() {
-        System.out.println("WRONG TYPE OF PARAMETER: " + parameterName);
+        System.err.println("WRONG TYPE OF PARAMETER: " + parameterName);
     }
 }

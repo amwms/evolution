@@ -2,7 +2,6 @@ package com.mimuw.amwms.evolution.world;
 
 import com.mimuw.amwms.evolution.tools.Direction;
 
-//TODO EXCEPTION - checked but check again
 public abstract class Space {
     private Space top;
     private Space right;
@@ -32,7 +31,7 @@ public abstract class Space {
         return right;
     }
 
-    public Space getNeighbouring(Direction direction) /*throws Exception*/ {
+    public Space getNeighbouring(Direction direction) {
         switch (direction) {
             case N:
                 return top;
@@ -40,11 +39,8 @@ public abstract class Space {
                 return right;
             case S:
                 return bottom;
-//            case W:
-//                return left;
             default:
                 return left;
-//                throw new Exception("WRONG MOVE GIVEN - NOT DIRECTION CHANGE");
         }
     }
 

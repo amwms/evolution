@@ -11,7 +11,7 @@ public class Evolution {
 
     private ArrayList<Organism> organisms;
     private World world;
-    private int time = 1; // ?? 0 czy 1
+    private int time = 1;
     private int fullReportFrequency;
     private Reporter reporter = new Reporter();
 
@@ -51,21 +51,24 @@ public class Evolution {
         }
     }
 
-    private boolean shoudlDoFullReport() {
+    private boolean shouldDoFullReport() {
         return time % fullReportFrequency == 0;
     }
 
+    // The full report consists of a report of each of the robs status which "took part" in that day
+    // and of a map of the world board (the "X" is where there is currently fully grown food, the "." is where there
+    // is currently no food and the numbers tell us how many organisms are currently on the specific space)
     private void fullReport() {
         for (Organism organism : organisms)  {
             System.out.println(organism);
         }
+
         System.out.println("------------------------MAP-------------------------");
         drawWorld();
         System.out.println("----------------------------------------------------");
     }
 
     private void drawWorld() {
-        //draw world
         int [][] organismSpaces = new int[world.getWIDTH()][world.getHEIGHT()];
         for (int x = 0; x < world.getWIDTH(); x++) {
             for (int y = 0; y < world.getHEIGHT(); y++) {
@@ -92,9 +95,12 @@ public class Evolution {
 
     public void develop(int numberOfRounds) {
         reporter.update(world, organisms);
+        
+        System.out.println("-----------REPORT BEFORE------------");
+        fullReport();
 
         for (int i = 1; i <= numberOfRounds; i++) {
-            if (shoudlDoFullReport()) {
+            if (shouldDoFullReport()) {
                 System.out.println("-----------BEFORE------------");
                 fullReport();
             }
@@ -103,10 +109,7 @@ public class Evolution {
             moveOrgamisms();
             reproduceOrganisms();
 
-//            reporter.update(world, organisms);
-//            reporter.report();
-
-            if (shoudlDoFullReport()) {
+            if (shouldDoFullReport()) {
                 System.out.println("-----------AFTER------------");
                 fullReport();
             }
@@ -120,7 +123,9 @@ public class Evolution {
 
             time++;
         }
-
+        
+        System.out.println("-----------REPORT AFTER------------");
+        fullReport();	
     }
 
 

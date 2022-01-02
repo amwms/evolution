@@ -17,5 +17,4 @@ public interface Organism {
     int getCoordinatesX();
     int getCoordinatesY();
 
-
 }

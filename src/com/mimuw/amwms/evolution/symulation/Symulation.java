@@ -11,12 +11,12 @@ import java.util.ArrayList;
 
 public class Symulation {
 
-    public void symulate() {
+    public void symulate(String fileMap, String fileParameters) {
         DataCreator data = new DataCreator();
         Reader read = new Reader();
 
-        File parametersFile = new File("parametry.txt");
-        File worldFile = new File("plansza.txt");
+        File parametersFile = new File(fileParameters);
+        File worldFile = new File(fileMap);
 
         read.parseInputParameters(data, parametersFile);
         read.readWorld(data, worldFile);

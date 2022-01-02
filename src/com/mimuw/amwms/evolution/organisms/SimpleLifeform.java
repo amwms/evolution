@@ -3,7 +3,7 @@ package com.mimuw.amwms.evolution.organisms;
 import com.mimuw.amwms.evolution.tools.Direction;
 import com.mimuw.amwms.evolution.tools.Program;
 import com.mimuw.amwms.evolution.world.Space;
-//TODO EXCEPTION - CHECKED
+
 public abstract class SimpleLifeform implements Organism {
 
     private int energy;
@@ -27,46 +27,42 @@ public abstract class SimpleLifeform implements Organism {
         payEnergyForNewDay(energyPaymentForDay);
 
         updateDeath();
-//        hasEnergy();
     }
 
-    //zakładam że wszystkie proste organizmy poruszają się jak roby ale inne typy organizmów mogą inaczej rozumieć
-    // instrukcje ze spisu instrukcji (np wąchają tylko pole za sobą a nie wszytskie, które są dookoła nich)
-
+    // I assume that all simple lifeforms move int the same way as robs, but other organisms
+    // (which can be added as an extension) can understand the instructions in a different way
+    // (for example they only smell behind themselves).
+    // I also assume that simple organisms (in this robs) love the north so they always look for food
+    // (moves SMELL and EAT) in the north first and then they check the rest of the directions clockwise.
     @Override
     public void move() {
         updateDeath();
         if (hasEnergy() && !program.hasProgramEnded()) {
             useEnergy();
-//            try {
-                switch (program.makeNextMove()) {
-                    case LEFT:
-                        direction = direction.turnLeft();
-                        break;
-                    case RIGHT:
-                        direction = direction.turnRight();
-                        break;
-                    case WALK:
-                        mySpace = mySpace.getNeighbouring(direction);
-                        if(mySpace.hasFood())
-                            eat(mySpace);
-                        break;
-                    case EAT:
-                        if (mySpace.isFoodInSurroundingEight()) {
-                            mySpace = mySpace.whereIsFoodInSurroundingEight();
-                            eat(mySpace);
-                        }
-                        break;
-                    case SMELL:
-                        direction = mySpace.findFoodInSurroundingFour(direction);
-                        break;
-                    default:
-                }
-//            } catch (Exception e) {
-//                System.out.println("WRONG DIRECTION GIVEN");
-//                e.printStackTrace();
-//                System.exit(1);
-//            }
+
+            switch (program.makeNextMove()) {
+                case LEFT:
+                    direction = direction.turnLeft();
+                    break;
+                case RIGHT:
+                    direction = direction.turnRight();
+                    break;
+                case WALK:
+                    mySpace = mySpace.getNeighbouring(direction);
+                    if(mySpace.hasFood())
+                        eat(mySpace);
+                    break;
+                case EAT:
+                    if (mySpace.isFoodInSurroundingEight()) {
+                        mySpace = mySpace.whereIsFoodInSurroundingEight();
+                        eat(mySpace);
+                    }
+                    break;
+                case SMELL:
+                    direction = mySpace.findFoodInSurroundingFour(direction);
+                    break;
+                default:
+            }
         }
     }
 
@@ -101,8 +97,6 @@ public abstract class SimpleLifeform implements Organism {
     }
 
     private boolean hasEnergy() {
-//        updateDeath();
-//        return isAlive();
         return energy > 0;
     }
 
@@ -140,10 +134,7 @@ public abstract class SimpleLifeform implements Organism {
         return mySpace;
     }
 
-    //TODO SPANIE PONIZEJ ZERA
     protected void updateDeath() {
-//        if (energy <= 0 && isAlive())
-//            die();
         if (energy < 0 && isAlive())
             die();
     }

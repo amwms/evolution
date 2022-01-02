@@ -1,7 +1,6 @@
 package com.mimuw.amwms.evolution.tools;
 
 import com.mimuw.amwms.evolution.exceptions.InvalidMove;
-//TODO EXCEPTION
 import java.util.ArrayList;
 
 public class Program {

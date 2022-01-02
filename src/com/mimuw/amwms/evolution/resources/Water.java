@@ -1,18 +1,18 @@
 package com.mimuw.amwms.evolution.resources;
 
-// przykładowe dodatkowe źródło jedzenia które się może znaleźć
-// klasa ta jest tylko i wyłącznie by pokazać w jaki sposób możnaby było dalej rozszerzyć projekt
-// wżadnym stopniu nie działa dla aktualnego stanu projektu
+// This is an example of another source of food that could be added as an extension to the original project.
+// This is only, and only, for demonstration purposes on how the project could be extended and in no way does it work
+// in the current state of the project.
 public class Water extends Resource{
-    private int amount; //podane w litrach
+    private int amount; // in liters
 
-    protected Water(int energy, int amount) {
+    public Water(int energy, int amount) {
         super(energy);
         this.amount = amount;
     }
 
 
-    // zakładam że każdy organizm w jedej turze pije 1 litr wody
+    // I asume that all organisms drink one liter of water on walking onto a space with water.
     @Override
     public int beConsumed() {
         if (amount > 0) {
@@ -25,8 +25,9 @@ public class Water extends Resource{
 
     @Override
     public void grow() {
-        // przy założeniu że zmienia się w symulacji pogoda (trzymamy ją w publicznym atrybucie "WEATHER")
-        // zakłądamy że każda tura deszczu napęłnia zbiornik wodny o 1 litr
+        // Assuming that we implement weather changes in the project (another extension) and assuming that one day
+        // of rain fills the reservoir with one liter of water, this is an example of how the method grow() would look
+        // for this class.
         /*
         * if (Symulation.WEATHER == RAIN)
         *   amount++;

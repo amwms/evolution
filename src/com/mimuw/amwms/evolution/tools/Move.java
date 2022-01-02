@@ -2,7 +2,6 @@ package com.mimuw.amwms.evolution.tools;
 
 import com.mimuw.amwms.evolution.exceptions.InvalidMove;
 
-//TODO - EXCEPTION
 public enum Move {
 
     LEFT('l'),
